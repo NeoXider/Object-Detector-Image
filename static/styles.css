@@ -1,0 +1,127 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column;
+    font-family: 'Roboto', sans-serif;
+    color: #fff; /* White for better readability */
+    margin: 0;
+    position: relative;
+}
+
+header {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    right: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 2; /* Above the overlay */
+}
+
+nav {
+    display: flex;
+}
+
+nav a {
+    margin: 0 15px;
+    color: #3498db;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+h1, h2 {
+    color: #fff; /* White for better readability */
+}
+
+a {
+    color: #3498db;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+button {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+}
+
+button:hover {
+    background-color: #2980b9;
+}
+
+input[type="file"], input[type="text"] {
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 100%;
+    max-width: 300px;
+}
+
+label {
+    display: block;
+    margin: 10px 0;
+}
+
+#loading-text {
+    font-size: 24px;
+    margin-top: 20px;
+    color: #fff; /* White for better readability */
+}
+
+#timer {
+    font-size: 20px;
+    margin-top: 10px;
+    color: #fff; /* White for better readability */
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7); /* Dark overlay */
+    z-index: 1;
+}
+
+.container {
+    position: relative;
+    z-index: 2; /* Above the overlay */
+}
+
+/* Adding a GIF as background */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('https://i.pinimg.com/originals/8e/14/55/8e145599d4847e339828787162952035.gif') no-repeat center center fixed; /* Replace with your GIF URL */
+    background-size: cover;
+    z-index: 0; /* Below other elements */
+}

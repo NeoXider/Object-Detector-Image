@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Detection Results - Neoxider</title>
+    <link rel="icon" href="https://sun9-55.userapi.com/MN9lz48tno35l0DUYaomqp3bSl4B-yhwIsCgBA/-efX1IGoIVw.jpg" type="image/x-icon"> <!-- Замените на URL вашей иконки -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="overlay"></div>
+    <div class="container">
+        <h1>Detection Results</h1>
+        <ul>
+            {% for detection in detections %}
+                <li>{{ detection.label }} with confidence {{ detection.confidence }} at location {{ detection.box }}</li>
+            {% endfor %}
+        </ul>
+        <a href="{{ url_for('index') }}">Upload another image</a>
+    </div>
+</body>
+</html>

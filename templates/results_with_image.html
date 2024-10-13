@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Detection Results - Neoxider</title>
+    <link rel="icon" href="https://hhttps://i.pinimg.com/originals/30/8b/b1/308bb17aa483c6fadae58940c66cf79b.gif" type="image/x-icon">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="overlay"></div>
+    <div class="container">
+        <h1>Detection Results</h1>
+        <ul>
+            {% for detection in detections %}
+                <li>{{ detection.label }} with confidence {{ detection.confidence }} at location {{ detection.box }}</li>
+            {% endfor %}
+        </ul>
+        <img src="{{ image_url }}" alt="Image with Boxes"> <!-- Убедитесь, что image_url передается правильно -->
+        <br>
+        <a href="{{ url_for('index') }}">Upload another image</a>
+    </div>
+</body>
+</html>

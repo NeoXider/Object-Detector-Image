@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Error - Neoxider</title>
+    <link rel="icon" href="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/6c3bf6aa-26e8-4e6a-a29f-4a4091b42bbb/dbkkwvv-effcee8f-ebc5-4ef1-ad21-adcce7103e16.gif" type="image/x-icon">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="overlay"></div>
+    <div class="container">
+        <h1>Error</h1>
+        <p>{{ error }}</p>
+        <img src="https://steamuserimages-a.akamaihd.net/ugc/1662357289982161773/F6DE2016D09B311523DB32C7C0D061468FAF1811/?imw=512&amp;imh=288&amp;ima=fit&amp;impolicy=Letterbox&amp;imcolor=%23000000&amp;letterbox=true" alt="Error Image"> <!-- Замените на URL вашей картинки -->
+        <br>
+        <a href="{{ url_for('index') }}">Upload another image</a>
+    </div>
+</body>
+</html>

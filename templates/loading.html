@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Loading - Neoxider</title>
+    <link rel="icon" href="https://steamuserimages-a.akamaihd.net/ugc/943951547335345444/F3F92666FD85785D2DDB6AFDD75A32EDF1FCE80A/?imw=512&amp;imh=285&amp;ima=fit&amp;impolicy=Letterbox&amp;imcolor=%23000000&amp;letterbox=true" type="image/x-icon"> <!-- Замените на URL вашей иконки -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <script>
+        // Функция для проверки статуса обработки
+        function checkStatus(taskId) {
+            fetch(`/task_status/${taskId}`)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.status === 'processing') {
+                        setTimeout(() => checkStatus(taskId), 3000);
+                    } else {
+                        if (data.image_url) {
+                            window.location.href = `/results_with_image?task_id=${taskId}`;
+                        } else {
+                            window.location.href = `/results?task_id=${taskId}`;
+                        }
+                    }
+                });
+        }
+
+        // Получаем ID задачи из URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const taskId = urlParams.get('task_id');
+
+        // Запускаем проверку статуса
+        checkStatus(taskId);
+
+        // Анимация с меняющимися точками
+        let dots = 0;
+        setInterval(() => {
+            dots = (dots + 1) % 4;
+            document.getElementById('loading-text').innerText = 'Пожалуйста, подождите, я ищу' + '.'.repeat(dots);
+        }, 500);
+
+        // Таймер на минуты
+        let timeLeft = 180;
+        window.onload = function() {
+            const timerElement = document.getElementById('timer');
+            const timerInterval = setInterval(() => {
+                if (timeLeft <= 0) {
+                    clearInterval(timerInterval);
+                    window.location.href = '/error?message=Processing%20timed%20out';
+                } else {
+                    const minutes = Math.floor(timeLeft / 60);
+                    const seconds = timeLeft % 60;
+                    timerElement.innerText = `Оставшееся время: ${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+                    timeLeft--;
+                }
+            }, 1000);
+        };
+    </script>
+</head>
+<body>
+    <div class="overlay"></div>
+    <div class="container">
+        <img src="https://steamuserimages-a.akamaihd.net/ugc/1867333336885920963/5C738FA2908C3446C9BFB31835A0A83D31AA2D20/?imw=512&amp;imh=287&amp;ima=fit&amp;impolicy=Letterbox&amp;imcolor=%23000000&amp;letterbox=true" alt="Loading...">
+        <h2 id="loading-text">Пожалуйста, подождите, я ищу</h2>
+        <div id="timer">Оставшееся время: 2:00</div>
+    </div>
+</body>
+</html>
