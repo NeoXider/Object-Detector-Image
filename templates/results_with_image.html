@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Detection Results - Neoxider</title>
-    <link rel="icon" href="https://hhttps://i.pinimg.com/originals/30/8b/b1/308bb17aa483c6fadae58940c66cf79b.gif" type="image/x-icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
@@ -12,12 +12,26 @@
         <h1>Detection Results</h1>
         <ul>
             {% for detection in detections %}
-                <li>{{ detection.label }} with confidence {{ detection.confidence }} at location {{ detection.box }}</li>
+            <li>{{ detection.label }} with confidence {{ detection.confidence }} at location {{ detection.box }}</li>
             {% endfor %}
         </ul>
-        <img src="{{ image_url }}" alt="Image with Boxes"> <!-- Убедитесь, что image_url передается правильно -->
+        <img src="{{ image_url }}" alt="Image with Boxes"> 
         <br>
         <a href="{{ url_for('index') }}">Upload another image</a>
     </div>
+    <script>
+        // Для мобильных устройств добавляем краткое описание и кнопку "Нажмите для расширения"
+        var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+        if (isMobile) {
+            document.querySelector('.container').innerHTML += `
+                <p>Кликните на картинку, чтобы посмотреть детали</p>
+                <button onclick="document.getElementById('expand-btn').click()">Нажмите для расширения</button>
+                `;
+            var expandBtn = document.createElement('div');
+            expandBtn.id = 'expand-btn';
+            expandBtn.style.display = 'none'; // по умолчанию скрыто
+            document.body.appendChild(expandBtn);
+        }
+    </script>
 </body>
 </html>

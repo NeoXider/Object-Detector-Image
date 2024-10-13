@@ -1,25 +1,39 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 
 body {
+    display: -webkit-flex;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    flex-direction: column;
     font-family: 'Roboto', sans-serif;
     background-color: #f0f0f0;
     color: #333;
-    margin: 0;
 }
 
 h1, h2 {
     color: #2c3e50;
+    text-align: center;
+}
+
+.error-message {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.container {
+    overflow: hidden;
+    max-width: 400px;
+    margin: 40px auto;
+    display: flex;
+    justify-content: center;
 }
 
 a {
     color: #3498db;
     text-decoration: none;
     font-weight: bold;
+    display: inline-block;
 }
 
 a:hover {
@@ -34,6 +48,7 @@ button {
     cursor: pointer;
     font-size: 16px;
     border-radius: 5px;
+    display: inline-block;
 }
 
 button:hover {
@@ -45,8 +60,7 @@ input[type="file"], input[type="text"] {
     margin: 10px 0;
     border: 1px solid #4a4a4a;
     border-radius: 5px;
-    width: 100%;
-    max-width: 300px;
+    width: calc(100% - 20px);
 }
 
 label {
@@ -67,7 +81,9 @@ label {
 }
 
 img {
-    max-width: 100%;
-    height: auto;
+    max-width: calc(70% - 20px);
+    height: min(calc(70vh - 10vw), auto); 
     border-radius: 15px;
+    display: block;
+    margin: 20px auto;
 }

@@ -30,7 +30,6 @@
             </label>
             <button type="submit">Upload</button>
         </form>
-
         <h2>Or Enter Image URL for Object Detection</h2>
         <form action="{{ url_for('detect_url') }}" method="post" onsubmit="showLoading()">
             <input type="text" name="url" placeholder="Enter image URL" required>
@@ -39,7 +38,6 @@
             </label>
             <button type="submit">Detect from URL</button>
         </form>
-
         <div id="loading" style="display:none;">
             <img src="https://steamuserimages-a.akamaihd.net/ugc/1867333336885920963/5C738FA2908C3446C9BFB31835A0A83D31AA2D20/?imw=512&amp;imh=287&amp;ima=fit&amp;impolicy=Letterbox&amp;imcolor=%23000000&amp;letterbox=true" alt="Loading...">
             <h2 id="loading-text">Пожалуйста, подождите, я ищу...</h2>
@@ -47,5 +45,3 @@
     </div>
 </body>
 </html>
-
-
