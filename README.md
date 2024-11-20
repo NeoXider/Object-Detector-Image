@@ -1,5 +1,5 @@
 # Object Detector Image
-
+ 
 ![Object Detection Example](image-1.png)
 ![Another Detection Example](image.png)
 
@@ -16,7 +16,7 @@
 
 ## Установка и запуск
 
-### Требования
+### Требования:
 
 - Python 3.8 или выше
 - Flask
